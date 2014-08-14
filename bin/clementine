@@ -1,0 +1,13 @@
+
+#!/usr/bin/env ruby
+
+require 'clementine'
+
+data = Clementine::Magic.new.call
+
+data.instance_variables.each do |v|
+  method = v.to_s.gsub("@", "")
+  method_name = method.gsub("_", " ")
+  puts method_name + ": " + data.send(method)
+end
+
